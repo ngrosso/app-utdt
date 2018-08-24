@@ -1,1 +1,199 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* - - - FIXED HEADER, SCROLLABLE BODY TABLE */
+
+#subjects-table thead, #subjects-table tbody tr , .subjects-info-table thead, .subjects-info-table tbody tr{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#subjects-table tbody {
+    display: block;
+    max-height: 70vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.subjects-info-table tbody {
+    display: block;
+    height: 30vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+#subjects-table td, .subjects-info-table td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*Set your columns to where you want them to be, skip the one that you can have resize to any width*/
+#subjects-table th:nth-child(1),#subjects-table td:nth-child(1) {
+    width: 100%;
+}
+
+/**/
+.subjects-info-table thead{
+    width:97.3%;
+}
+
+.subjects-info-table th, .subjects-info-table td{
+    font-size: 8pt;
+    text-align: center;
+}
+
+#subject-info th:nth-child(1),#subject-info td:nth-child(1) {
+    width: 35%;
+}
+#subject-info th:nth-child(2), #subject-info td:nth-child(2) {
+    width: 20%;
+}
+#subject-info th:nth-child(3), #subject-info td:nth-child(3) {
+    width: 35%;
+}
+#subject-info th:nth-child(4), #subject-info td:nth-child(4) {
+    width: 10%;
+}
+
+#assigned-subjects th:nth-child(1),#assigned-subjects td:nth-child(1) {
+    width: 30%;
+}
+#assigned-subjects th:nth-child(2), #assigned-subjects td:nth-child(2) {
+    width: 15%;
+}
+#assigned-subjects th:nth-child(3), #assigned-subjects td:nth-child(3) {
+    width: 15%;
+}
+#assigned-subjects th:nth-child(4), #assigned-subjects td:nth-child(4) {
+    width: 35%;
+}
+#assigned-subjects th:nth-child(5), #assigned-subjects td:nth-child(5) {
+    width: 5%;
+}
+
+#subjects-column .nav-pills{
+    margin-top:10px;
+    padding-bottom:10px;
+}
+
+#subjects-column .nav-pills .nav-item .nav-link {
+    padding:0.1rem !important;
+    font-size:12pt;
+}
+
+.col-sm, .col-5, .col-4{
+    padding-top : 15px;
+}
+
+#subjects-column #search-bar *{/*, #search-bar i, #search-bar span, #search-bar input, #search-bar div {*/
+    max-height: 7vh;
+}
+
+.container-fluid{
+    min-height: 100% !important;
+    max-height: 100% !important;
+}
+
+.container-fluid, .row, .col-sm, .col-5, .col-4
+{
+    overflow-y:auto;
+    height:100%;
+}​
+
+.subjects-info-table th, .subjects-info-table td{
+    text-align: center;
+}
+
+.subjects-info-table{
+    border-radius: 5px;
+}
+
+.subjects-info-table thead{
+    background-color:#bcbcbc;
+    overflow-x: hidden !important;
+    font-size:10pt;
+}
+
+.subjects-info-table td{
+    height: 2.5em;
+}
+
+h4,#subject-info{
+    padding-bottom:20px;
+}
+
+.fa{
+    font-size:15pt !important;
+}
+
+#hours-table{
+    text-align:center;
+    width:100%;
+    margin:0px auto;
+    float: none;
+    margin-top:10px !important;
+    margin-bottom:10px !important;
+    color:gray;
+    font-size:10pt;
+}
+
+#hours-table thead{
+    background-color: #e0e0e0;
+}
+
+.alert, .close {
+  margin-bottom: 10px !important;
+  height: 30px !important;
+  line-height:30px !important;
+  padding: 0px 15px !important;
+}
+
+.nav-item:hover{
+    cursor: pointer;
+}
+
+.active:hover{
+    color:white !important;
+}
+
+#subject-summary{
+    padding-right: 25px;
+}
+
+.navbar span{
+    color:white !important;
+}
+
+.table-calendar thead tr th, .table-calendar tbody tr td{
+  border:1px solid black;
+  font-size:10pt;
+}
+
+.table-calendar {
+    font-size: 10pt;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+.table-calendar th, .table-calendar .hour-column{
+    text-align:center;
+    background-color: #bcbcbc;
+}
+
+.table-calendar .selected {
+    background-color : #007bff;
+}
+
+.table-calendar tbody tr td, .table-calendar tbody{
+border:1px solid black !important;
+width:100px;
+}
+
+.table-calendar td{
+    height:2em;
+}
+
+.table-calendar thead{
+    border-bottom:2px solid black;
+}

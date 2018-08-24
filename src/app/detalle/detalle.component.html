@@ -1,0 +1,34 @@
+
+<div *ngIf="materia != null">
+	<h4>{{materia.name}}</h4>
+	<h5><b>Informacion de la materia:</b></h5>
+	<h5>
+		Horas Semanales: {{materia.weeklyHours}} <br>
+		Codigo de Materia: {{materia.subjectCode}} <br>
+		Jefe de catredra: {{materia.chiefLastName}},{{materia.chiefName}}
+	</h5>
+		<hr>
+		<table id="subject-info" class="table-bordered subjects-info-table">
+			<thead>
+				<tr>
+					<th class="col-sm-1">Dias</th>
+					<th class="col-sm-1">Horario</th>
+					<th class="col-sm-1">Profesor</th>
+					<th class="col-sm-1"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let grade of gradeList">
+					<td><span> {{grade.days}}</span></td>
+					<td><span> {{grade.hours}}</span></td>
+					<td><span> {{grade.profLastName}}, {{grade.profName}}</span></td>
+					<td><input type="radio" (click)="seleccion(grade.id)" name="gradeRadio"></td>
+				</tr>
+			</tbody>
+		</table>
+		<app-horarios></app-horarios>		
+		<div class="panel-footer text-center">
+			<button type="button" id="btnSave" class="btn btn-primary" (click)=submit()>Agregar Materia</button>
+		</div>
+
+</div>

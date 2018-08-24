@@ -1,0 +1,31 @@
+<h4>Materias</h4>
+<div class="input-group subjects-search-bar">
+	<input class="form-control py-2 border-right-0 border" id="searchbar" [(ngModel)]="searchInput" type="search" placeholder="Buscar">
+	<span class="input-group-append">
+		<div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+	</span>
+</div>
+<ul class="nav nav-pills nav-fill">
+	<li class="nav-item" (click)="duration = '0'">
+		<a class="nav-link" [ngClass]="{active : duration=='0'}">Todas</a> <!-- filtrar por todas -->
+	</li>
+	<li class="nav-item" (click)="duration = 'Anual'">
+		<a class="nav-link" [ngClass]="{active : duration=='Anual'}">Anuales</a> <!-- filtrar por anuales -->
+	</li>
+	<li class="nav-item" (click)="duration = 'Cuatrimestral'">
+		<a class="nav-link" [ngClass]="{active : duration=='Cuatrimestral'}">Cuatrimestrales</a> <!-- filtrar por cuatri -->
+	</li>
+</ul>
+<table id="subjects-table" class="table table-hover fixed-table-body" >
+	<thead>
+		<tr>
+			<th>Materia</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let materia of materias | inputFilter: searchInput"> <!--  traer las materias dependiendo del filtro -->
+			<td *ngIf="materia.duration == duration || duration == '0'" (click)="announce(materia)">{{materia.name}}</td>
+		</tr>
+	</tbody>
+</table>
+				

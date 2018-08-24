@@ -1,0 +1,47 @@
+<div id="subject-summary">
+	<h4>Resumen de Materias</h4>
+	<table id="assigned-subjects" class="table-responsive table-bordered subjects-info-table">
+		<thead>
+			<tr>
+				<th class="col-sm-1">Materia</th>
+				<th class="col-sm-1">Días</th>
+				<th class="col-sm-1">Horario</th>
+				<th class="col-sm-1">Profesor</th>
+				<th class="col-sm-1"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let grade of calendarList"> <!-- TODO: ngfor materias seleccionadas-->
+				<td><span>{{grade[0]}}</span></td>
+				<td><span>{{grade[1].days}}</span></td>
+				<td><span>{{grade[1].hours}}</span></td>
+				<td><span>{{grade[1].profLastName}}, {{grade[1].profName}}</span></td>
+				<td><span class="fa fa-trash"></span></td> <!-- remover materias -->
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<table class="table-calendar table-responsive">
+		<thead>
+			<tr>
+				<th class="col-sm-1"></th>
+				<th class="col-sm-1">Lun</th>
+				<th class="col-sm-1">Mar</th>
+				<th class="col-sm-1">Mié</th>
+				<th class="col-sm-1">Jue</th>
+				<th class="col-sm-1">Vie</th>
+				<th class="col-sm-1">Sab</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let rowIndex of [0,1,2,3,4,5]">
+				<td class="hour-column">{{rowIndex+1}}</td>
+				<td *ngFor="let columnIndex of [0,1,2,3,4,5]"></td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br><br>
+	<div class="panel-footer text-center">
+		<button type="button" id="btnSave" class="btn btn-primary" disabled>Finalizar Inscripción</button>
+	</div>
+</div>
