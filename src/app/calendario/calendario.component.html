@@ -11,12 +11,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let grade of calendarList"> <!-- TODO: ngfor materias seleccionadas-->
-				<td><span>{{grade[0]}}</span></td>
-				<td><span>{{grade[1].days}}</span></td>
-				<td><span>{{grade[1].hours}}</span></td>
-				<td><span>{{grade[1].profLastName}}, {{grade[1].profName}}</span></td>
-				<td><span class="fa fa-trash"></span></td> <!-- remover materias -->
+			<tr *ngFor="let item of calendarList"> <!-- TODO: ngfor materias seleccionadas-->
+				<td><span>{{item.name}}</span></td>
+				<td><span>{{item.grade.days}}</span></td>
+				<td><span>{{item.grade.hours}}</span></td>
+				<td><span>{{item.grade.profLastName}}, {{item.grade.profName}}</span></td>
+				<td><span class="fa fa-trash" (click)="delete(item)">X</span></td> <!-- remover materias -->
 			</tr>
 		</tbody>
 	</table>

@@ -24,15 +24,10 @@ export class DetalleComponent implements OnInit {
         this.gradeList = materia.gradeList;
       })}
 
-  ngOnInit() {/*
-  	this.materiaService.broadcastMateria.subscribe(materia =>{
-  		this.materia = materia;
-        console.log("desde detalle "+JSON.stringify(this.materia));
-  	});*/
+  ngOnInit() {
   }
 
   seleccion(gradeId: number){
-    console.log("curso elegido de la tabla: "+gradeId)
     this.gradeId = gradeId;
   } 
 
@@ -40,9 +35,6 @@ export class DetalleComponent implements OnInit {
 
   
   submit(){
-    console.log("submit materia "+JSON.stringify(this.materia))
-    console.log("submit gradeList "+JSON.stringify(this.gradeList))
-    console.log("submit gradeId "+this.gradeId)
     this.curso.getCurso(this.gradeId)
   }
   

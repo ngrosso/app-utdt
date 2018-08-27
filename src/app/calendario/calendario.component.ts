@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 import { MateriaService } from '../materia.service';
 import { Materia } from '../materia';
@@ -13,10 +13,11 @@ export class CalendarioComponent implements OnInit {
 
 	subscription: Subscription;
 	materia: Materia;
-	materiaId: number;
 	gradeList: Grade[];
 	calendarList = [];
-	materiaCalendar: string;
+  infoMateria: Materia;
+  valido: boolean;
+  activeCalendar: boolean;
 
 
   constructor(private materiaService: MateriaService) { 
@@ -24,25 +25,53 @@ export class CalendarioComponent implements OnInit {
       materia =>{
         this.materia = materia;
         this.gradeList = materia.gradeList;
+        this.valido = true;
       })}
 
   ngOnInit() {
   }
 
-  //@HostBinding('class.active')
-
+  delete(grade:any){
+    var index = this.calendarList.indexOf(grade, 0);
+    if (index > -1) this.calendarList.splice(index, 1);
+    console.log(JSON.stringify(grade));
+    console.log(JSON.stringify(this.calendarList)) 
+  }
 
   getCurso(gradeId: number){
-  	console.log("get curso: id "+gradeId)
-  	console.log("get curso: Materia: "+JSON.stringify(this.materia));
-  	console.log("get curso: GradeList: "+JSON.stringify(this.gradeList));
-  	this.materiaCalendar = this.materia.name;
+    this.valido = true;
   	for (let index in this.gradeList) {
+      //busco el curso particular en la lista de la materia
   	 	if(this.gradeList[index].id === gradeId){
-  			console.log("get curso: curso"+JSON.stringify(this.gradeList[index]))
+        //===========arrancan las validaciones==============
+        //1)valido que no se repita la materia o el curso
+         this.calendarList.forEach(item =>{
 
-  	 		this.calendarList.push([this.materia.name,this.gradeList[index]]);
-  	 		console.log(JSON.stringify(this.calendarList));
+          if(item.id == this.materia.id){ 
+            console.error("Materia ya ingresada")
+            this.valido=false;
+          }//fin validacion 1)
+
+
+         //2) si se pisa el dia, me fijo el ultimo horario del guardado y el primero del traido
+          if(item.grade.days.includes(this.gradeList[index].days)||this.gradeList[index].days.includes(item.grade.days)){
+            if(item.grade.hours[0]<=this.gradeList[index].hours[this.gradeList[index].hours.length-1] || this.gradeList[index].hours[0]>=item.grade.hours[item.grade.hours.length-1]){
+              console.error("la materia ingresada esta dentro de una franja horaria de una ya ingresada")
+              this.valido = false;
+            } 
+          }//fin validacion 2
+        }) 
+
+
+
+
+         //si todo es valido, pusheo el item
+  	 		if(this.valido){
+           this.calendarList.push({"id":this.materia.id,"name":this.materia.name,"grade":this.gradeList[index]});
+            this.activeCalendar = !this.activeCalendar;
+         }else{
+           console.error("Informacion Invalida")
+         }
   	 	}
   	}
   }
