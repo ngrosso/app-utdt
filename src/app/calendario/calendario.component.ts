@@ -4,6 +4,8 @@ import { Subscription, Observable } from 'rxjs';
 import { MateriaService } from '../materia.service';
 import { Materia } from '../materia';
 import { Grade } from '../grade';
+
+
 @Component({
   selector: 'app-calendario',
   templateUrl: './calendario.component.html',
@@ -18,6 +20,7 @@ export class CalendarioComponent implements OnInit {
   infoMateria: Materia;
   valido: boolean;
   activeCalendar: boolean;
+  tableMatrix= [];
 
 
   constructor(private materiaService: MateriaService) { 
@@ -61,17 +64,13 @@ export class CalendarioComponent implements OnInit {
             } 
           }//fin validacion 2
         }) 
-
-
-
-
+         //===========fin validaciones==============
          //si todo es valido, pusheo el item
   	 		if(this.valido){
            this.calendarList.push({"id":this.materia.id,"name":this.materia.name,"grade":this.gradeList[index]});
-            this.activeCalendar = !this.activeCalendar;
-         }else{
+        }else{
            console.error("Informacion Invalida")
-         }
+        }
   	 	}
   	}
   }

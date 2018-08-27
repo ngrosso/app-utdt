@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service'
 import { FormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { MateriasComponent } from './materias/materias.component';
@@ -12,6 +13,7 @@ import { MateriaService } from './materia.service';
 import { InputFilterPipe } from './input-filter.pipe';
 import { HorariosComponent } from './horarios/horarios.component';
 import { CalendarioComponent } from './calendario/calendario.component';
+
 
 @NgModule({
   declarations: [
