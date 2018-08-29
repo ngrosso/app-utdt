@@ -8,6 +8,9 @@
 		Jefe de catredra: {{materia.chiefLastName}},{{materia.chiefName}}
 	</h5>
 		<hr>
+		<div class="alert" *ngIf="alert.active" [ngClass]="alert.type">
+  			<strong>{{alert.title}}:</strong>{{alert.message}}
+		</div>
 		<table id="subject-info" class="table-bordered subjects-info-table">
 			<thead>
 				<tr>

@@ -141,12 +141,12 @@ h4,#subject-info{
     background-color: #e0e0e0;
 }
 
-.alert, .close {
+/*.alert, .close {
   margin-bottom: 10px !important;
   height: 30px !important;
   line-height:30px !important;
   padding: 0px 15px !important;
-}
+}*/
 
 .nav-item:hover{
     cursor: pointer;
@@ -181,7 +181,7 @@ h4,#subject-info{
     background-color: #bcbcbc;
 }
 
-.table-calendar .selected {
+.selected {
     background-color : #007bff;
 }
 
