@@ -81,8 +81,9 @@
     font-size:12pt;
 }
 
-.col-sm, .col-5, .col-4{
+.col-3, .col-5, .col-4{
     padding-top : 15px;
+    min-height: 100%
 }
 
 #subjects-column #search-bar *{/*, #search-bar i, #search-bar span, #search-bar input, #search-bar div {*/
@@ -185,6 +186,16 @@ h4,#subject-info{
     background-color : #007bff;
 }
 
+.selectedM {
+    background-color : #007bff;
+}
+.selectedT {
+    background-color : #F57900;
+}
+.selectedN {
+    background-color : #CC0000;
+}
+
 .table-calendar tbody tr td, .table-calendar tbody{
 border:1px solid black !important;
 width:100px;
@@ -196,4 +207,8 @@ width:100px;
 
 .table-calendar thead{
     border-bottom:2px solid black;
+}
+
+.container-fluid{
+    height: 100vh;
 }

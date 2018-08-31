@@ -36,7 +36,7 @@
 		<tbody>
 			<tr *ngFor="let rowIndex of [0,1,2,3,4,5]; index as i">
 				<td class="hour-column">{{rowIndex+1}}</td>
-				<td *ngFor="let columnIndex of [0,1,2,3,4,5]; index as j"><div [ngClass]="setClass(i,j)" style="height: 100%; width: 50%;float: left"></div><div style="background: coral;height: 100%;width: 50%;float: right;"></div></td>
+				<td *ngFor="let columnIndex of [0,1,2,3,4,5]; index as j" [style.background]="setCalendar(i,j)">
 			</tr>
 		</tbody>
 	</table>
