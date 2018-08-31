@@ -197,3 +197,7 @@ width:100px;
 .table-calendar thead{
     border-bottom:2px solid black;
 }
+
+.container-fluid{
+    height: 100vh;
+}
