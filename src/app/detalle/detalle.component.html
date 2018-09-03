@@ -8,8 +8,11 @@
 		Jefe de catredra: {{materia.chiefLastName}},{{materia.chiefName}}
 	</h5>
 		<hr>
-		<div class="alert" *ngIf="alert.active" [ngClass]="alert.type">
-  			<strong>{{alert.title}}:</strong>{{alert.message}}
+		<div style="height:85px">
+
+			<div class="alert" *ngIf="alert.active" [ngClass]="alert.type">
+				<strong>{{alert.title}}:</strong>{{alert.message}}
+			</div>
 		</div>
 		<table id="subject-info" class="table-bordered subjects-info-table">
 			<thead>
@@ -21,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let grade of gradeList">
+				<tr *ngFor="let grade of gradeList" [class.selectedGrade]="grade.id == selectedGradeId">
 					<td><span> {{grade.days}}</span></td>
 					<td><span> {{grade.hours}}</span></td>
 					<td><span> {{grade.profLastName}}, {{grade.profName}}</span></td>

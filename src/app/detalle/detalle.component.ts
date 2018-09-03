@@ -18,7 +18,9 @@ export class DetalleComponent implements OnInit {
   gradeList: Grade[];
   subscription: Subscription;
   alert: Alert;
+  selectedGradeId: number;
 
+  //el detalle se suscribe a MateriaService, ante una nueva seleccion, trae los cursos de dicha materia
   constructor(private materiaService: MateriaService) {
     this.subscription = materiaService.materiaBroadcast$.subscribe(
       materia =>{
@@ -31,14 +33,19 @@ export class DetalleComponent implements OnInit {
   ngOnInit() {
   }
 
+  //evento bindeado en el html
+  //elije un curso y pasa el id
   seleccion(gradeId: number){
     this.gradeId = gradeId;
+    this.selectedGradeId = gradeId;
   } 
 
+  //linkeo el metodo de CalendarioComponent al submit de DetalleComponent para que valide
   @Input() curso: CalendarioComponent;
 
-  
+  //refreshea el cartel de error y si es satisfactorio, 
   submit() {
+    this.selectedGradeId=-1;
     this.alert = new Alert();
     try {
       this.curso.getCurso(this.gradeId);

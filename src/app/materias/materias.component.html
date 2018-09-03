@@ -24,7 +24,7 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let materia of materias | inputFilter: searchInput"> <!--  traer las materias dependiendo del filtro -->
-			<td *ngIf="materia.duration == duration || duration == '0'" (click)="announce(materia)">{{materia.name}}</td>
+			<td *ngIf="materia.duration == duration || duration == '0'" (click)="announce(materia)" [class.selected]="materia == selectedMateria">{{materia.name}}</td>
 		</tr>
 	</tbody>
 </table>

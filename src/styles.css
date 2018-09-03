@@ -196,6 +196,9 @@ h4,#subject-info{
 .selectedN {
     background-color : #CC0000;
 }
+.selectedGrade{
+    background-color: #aaDDff
+}
 
 .table-calendar tbody tr td, .table-calendar tbody{
 border:1px solid black !important;

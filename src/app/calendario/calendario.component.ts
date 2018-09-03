@@ -18,10 +18,8 @@ const CURSONOCHE = 'n'
     styleUrls: ['./calendario.component.css']
 })
 
-
-
 export class CalendarioComponent implements OnInit {
-
+    
     subscription: Subscription;
     materia: Materia;
     gradeList: Grade[];
@@ -31,8 +29,7 @@ export class CalendarioComponent implements OnInit {
     activeCalendar: boolean;
     tableMatrix= [];
     
-
-    //subscribe al componente a los cambios que haya en el servicio MateriaService
+    //suscribe al componente a los cambios que haya en el servicio MateriaService
     //recibe la materia broadcasteada por materias.component y su lista de cursos
     constructor(private materiaService: MateriaService,private _sanitizer: DomSanitizer) { 
         this.subscription = materiaService.materiaBroadcast$.subscribe(
@@ -74,9 +71,10 @@ export class CalendarioComponent implements OnInit {
             });
     };
 
+    //cuando se registra una materia devuelve el color con el cual rellenar la celda
+    //llamada por setCalendar
     unCurso(materia:any){
-        //console.log(materia)
-        switch (materia.grade.days.substring(4,5).toLowerCase()){
+            switch (materia.grade.days.substring(4,5).toLowerCase()){
             case CURSOMANIANA: return "red";
             case CURSOTARDE: return "green";
             case CURSONOCHE: return "blue";
@@ -85,6 +83,9 @@ export class CalendarioComponent implements OnInit {
         
     }
 
+    //cuando se registra una segunda materia en la misma celda del mismo dia
+    //divide la celda en dos y rellena la celda con los colores correspondientes
+    //llamada por setCalendar 
     dosCursos(materiaArr:any[]){
         let turnos: string = "";
         for(let materia of materiaArr){
@@ -98,6 +99,9 @@ export class CalendarioComponent implements OnInit {
             return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, red 0, red 50%, blue 50%, blue 100%');
     }
 
+    //al registrarse una tercer materia en la misma celda del mismo dia
+    //divide la celda en tres y la rellena con los colores correspondientes a los tres turnos
+    //llamada por setCalendar
     tresCursos(materiaArr:any[]){
         let turnos: string = "";
         for(let materia of materiaArr){
@@ -107,7 +111,7 @@ export class CalendarioComponent implements OnInit {
             return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, red 0, red 33%, green 33%, green 66%, blue 66%, blue 100%)');
     }
 
-    // Le agrega la clase "selected" a las celdas que cumplan con la condicion de estar en el array de horas de materias asignadas
+    // Invoca las funciones correspondientes para rellenar las celdas con los colores correspondientes
     // Tambien borra les quita la clase "selected" a las que no esten en el array
      setCalendar(i:number,j:number){
         let aux = [];
@@ -144,11 +148,7 @@ export class CalendarioComponent implements OnInit {
                     if(item.id == this.materia.id) throw new Alert(true,"Error"," Materia ya ingresada.","alert-danger");//fin validacion 1)
                     let newDayArray=item.grade.days.split(",").map(str=>str.trim());
                     let savedDayArray=this.gradeList[index].days.split(",").map(str=>str.trim());
-
-                    //================================================================================
-                    //TODO: Fijarse el turno
-                    //================================================================================
-
+                    
                     //2) si se pisa el dia, me fijo el ultimo horario del guardado y el primero del traido
                     if(this.isRepeated(newDayArray,savedDayArray)){
                             var startNew = item.grade.hours[0];
