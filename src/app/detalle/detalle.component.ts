@@ -36,6 +36,7 @@ export class DetalleComponent implements OnInit {
   //evento bindeado en el html
   //elije un curso y pasa el id
   seleccion(gradeId: number){
+    this.alert = new Alert();
     this.gradeId = gradeId;
     this.selectedGradeId = gradeId;
   } 
