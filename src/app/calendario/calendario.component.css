@@ -1,0 +1,18 @@
+#referenciaCalendario{
+	display: flex;
+	flex-direction: row;
+}
+.referencia{
+	margin-left: 20px;
+	width: 20px;
+	height: 20px;
+}
+#referenciaManiana{
+	background-color: #D00; 
+}
+#referenciaTarde{
+	background-color: #0D0;
+}
+#referenciaNoche{
+	background-color: #00D;
+}

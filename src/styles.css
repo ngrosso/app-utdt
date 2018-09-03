@@ -180,6 +180,7 @@ h4,#subject-info{
 .table-calendar th, .table-calendar .hour-column{
     text-align:center;
     background-color: #bcbcbc;
+    width: 10%;
 }
 
 .selected {
@@ -207,8 +208,4 @@ width:100px;
 
 .table-calendar thead{
     border-bottom:2px solid black;
-}
-
-.container-fluid{
-    height: 100vh;
 }

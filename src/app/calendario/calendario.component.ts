@@ -8,9 +8,9 @@ import { Materia } from '../materia';
 import { Grade } from '../grade';
 import { Alert } from '../detalle/alert'
 
-const CURSOMANIANA = "red"
-const CURSOTARDE = "blue"
-const CURSONOCHE = "green"
+const CURSOMANIANA = 'm'
+const CURSOTARDE = 't'
+const CURSONOCHE = 'n'
 
 @Component({
     selector: 'app-calendario',
@@ -46,13 +46,13 @@ export class CalendarioComponent implements OnInit {
     ngOnInit() {
     }
 
-    //borra una materia
+    // borra una materia
     delete(grade:any){
         var index = this.calendarList.indexOf(grade, 0);
-        if (index > -1) this.calendarList.splice(index, 1);
+        if (index > -1) { this.calendarList.splice(index, 1); }
     }
 
-    //pasa del dia al numero de columna que le corresponde en el calendario
+    // pasa del dia al numero de columna que le corresponde en el calendario
     parseDay(day: string){
         switch(day.substring(0,3).toLowerCase()){
             case 'lun': return 0;
@@ -75,14 +75,36 @@ export class CalendarioComponent implements OnInit {
     };
 
     unCurso(materia:any){
-        console.log(materia)
+        //console.log(materia)
         switch (materia.grade.days.substring(4,5).toLowerCase()){
-            case 'm': return CURSOMANIANA;
-            case 't': return CURSOTARDE;
-            case 'n': return CURSONOCHE;
+            case CURSOMANIANA: return "red";
+            case CURSOTARDE: return "green";
+            case CURSONOCHE: return "blue";
             default: return "coral";
         }
         
+    }
+
+    dosCursos(materiaArr:any[]){
+        let turnos: string = "";
+        for(let materia of materiaArr){
+            turnos+=(materia.grade.days.substring(4,5).toLowerCase())
+        }
+        if(turnos.includes(CURSOMANIANA) && turnos.includes(CURSOTARDE))
+            return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, red 0, red 50%, green 50%, green 100%');
+        if(turnos.includes(CURSOTARDE) && turnos.includes(CURSONOCHE)) 
+            return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, green 0, green 50%, blue 50%, blue 100%');
+        if(turnos.includes(CURSOMANIANA) && turnos.includes(CURSONOCHE))
+            return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, red 0, red 50%, blue 50%, blue 100%');
+    }
+
+    tresCursos(materiaArr:any[]){
+        let turnos: string = "";
+        for(let materia of materiaArr){
+            turnos+=(materia.grade.days.substring(4,5).toLowerCase())
+        }
+        if(turnos.includes(CURSOMANIANA) && turnos.includes(CURSOTARDE) && turnos.includes(CURSONOCHE))
+            return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, red 0, red 33%, green 33%, green 66%, blue 66%, blue 100%)');
     }
 
     // Le agrega la clase "selected" a las celdas que cumplan con la condicion de estar en el array de horas de materias asignadas
@@ -95,24 +117,15 @@ export class CalendarioComponent implements OnInit {
                 if((i>=Number(materia.grade.hours[0]-1) && i<= Number(materia.grade.hours[materia.grade.hours.length-1]-1)) && j == this.parseDay(day)){
                     aux.push(materia)
                     break;
-                    //console.log(day.substring(4,5).toLowerCase())
-                    //console.log(this._sanitizer.bypassSecurityTrustStyle("linear-gradient(to right, transparent 0, transparent 33%, transparent 33%, transparent 66%, #ff0000 66%, #ff0000 100%)"))
-                    /*switch(day.substring(4,5).toLowerCase()){
-                        case 'm': return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, #c4d7e6 0, #c4d7e6 33%, transparent 33%, transparent 66%, transparent 66%, transparent 100%)');
-                        case 't': return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, transparent 0, transparent 33%, #66a5ad 33%, #66a5ad 66%, transparent 66%, transparent 100%)');
-                        case 'n': return this._sanitizer.bypassSecurityTrustStyle('linear-gradient(to right, transparent 0, transparent 33%, transparent 33%, transparent 66%, #ff0000 66%, #ff0000 100%)');
-                        default: throw new Alert(true,"Error","No se pudo generar los gradientes","alert-info")
-                    }*/
                 }
             }
-            console.log(aux.length)
-            switch(aux.length){
-                case 0: break;
-                case 1: return this.unCurso(aux[0]);
-                case 2: return "violet";//dosCursos(aux); break;
-                //case 3: tresCursos(); break;
-                default: throw new Alert(true,"Error","No se pudo generar los gradientes","alert-info");
-            }
+        }
+        switch(aux.length){
+            case 0: break;
+            case 1: return this.unCurso(aux[0]);
+            case 2: return this.dosCursos(aux);
+            case 3: return this.tresCursos(aux);
+            default: throw new Alert(true,"Error","No se pudo generar los gradientes","alert-info");
         }   //return {background:"red"};
     }
 
@@ -138,8 +151,6 @@ export class CalendarioComponent implements OnInit {
 
                     //2) si se pisa el dia, me fijo el ultimo horario del guardado y el primero del traido
                     if(this.isRepeated(newDayArray,savedDayArray)){
-                            console.log(newDayArray)
-                            console.log(savedDayArray)
                             var startNew = item.grade.hours[0];
                             var endNew = item.grade.hours[item.grade.hours.length-1]
                             var startSaved = this.gradeList[index].hours[0]

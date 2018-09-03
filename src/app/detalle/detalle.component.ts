@@ -38,11 +38,11 @@ export class DetalleComponent implements OnInit {
   @Input() curso: CalendarioComponent;
 
   
-  submit(){
-    this.alert= new Alert();
+  submit() {
+    this.alert = new Alert();
     try {
-      this.curso.getCurso(this.gradeId)
-    }catch(exception){
+      this.curso.getCurso(this.gradeId);
+    } catch (exception) {
       this.alert = exception;
       
     }

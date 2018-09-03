@@ -158,7 +158,7 @@ export class InMemoryDataService implements InMemoryDbService{
 		         },
 		         {
 		            "id": 3,
-		            "days": "Mar(N), Vie(N)",
+		            "days": "Mar(M), Vie(M)",
 		            "hours": "1 a 6",
 		            "profLastName": "Alfredo",
 		            "profName": "Serrano"
@@ -183,7 +183,7 @@ export class InMemoryDataService implements InMemoryDbService{
 		         },
 		         {
 		            "id": 2,
-		            "days": "Mar(N), Jue(N)",
+		            "days": "Mar(M), Jue(M)",
 		            "hours": "1 a 6",
 		            "profLastName": "Espinola",
 		            "profName": "Ruben"
