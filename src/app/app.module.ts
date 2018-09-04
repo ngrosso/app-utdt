@@ -4,8 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service'
 import { FormsModule } from '@angular/forms'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 import { AppComponent } from './app.component';
 import { MateriasComponent } from './materias/materias.component';
@@ -29,9 +27,9 @@ import { CalendarioComponent } from './calendario/calendario.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    )
+    //HttpClientInMemoryWebApiModule.forRoot(
+    //  InMemoryDataService, {dataEncapsulation: false}
+    //)
   ],
   providers: [MateriaService],
   bootstrap: [AppComponent]

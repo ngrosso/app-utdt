@@ -12,7 +12,8 @@ const httpOptions = {
 })
 export class MateriaService {
 
-	private materiasUrl = 'api/Materias';  // URL to web api
+	private materiasUrl = 'http://localhost:3000/materias';  // URL to web api
+	//corre con el comando: json-server --watch ~/workspace/angular-ex1/db.json
 
 	//trae el array mock como observable
 	getMaterias(): Observable<Materia[]>{

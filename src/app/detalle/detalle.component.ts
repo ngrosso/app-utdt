@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
-import { HorariosComponent } from '../horarios/horarios.component'
 import { CalendarioComponent } from '../calendario/calendario.component';
 import { Alert } from './alert'
 import { Materia } from '../materia';
 import { Grade } from '../grade';
 import { MateriaService } from '../materia.service';
 import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
@@ -52,9 +52,6 @@ export class DetalleComponent implements OnInit {
       this.curso.getCurso(this.gradeId);
     } catch (exception) {
       this.alert = exception;
-      
     }
   }
-  
-
 }
