@@ -27,9 +27,9 @@ import { CalendarioComponent } from './calendario/calendario.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    //HttpClientInMemoryWebApiModule.forRoot(
-    //  InMemoryDataService, {dataEncapsulation: false}
-    //)
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {dataEncapsulation: false}
+    )
   ],
   providers: [MateriaService],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CalendarioComponent } from '../calendario/calendario.component';
 import { Alert } from './alert'
 import { Materia } from '../materia';
@@ -27,6 +27,7 @@ export class DetalleComponent implements OnInit {
         this.materia = materia;
         this.gradeList = materia.gradeList;
         this.gradeId = null;
+        this.selectedGradeId = null;
         this.alert = new Alert();
       })}
 

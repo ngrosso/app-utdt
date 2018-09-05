@@ -24,7 +24,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let grade of gradeList" [class.selectedGrade]="grade.id == selectedGradeId">
+				<tr *ngFor="let grade of gradeList" [class.selectedGrade]="grade.id == selectedGradeId" id="tr-grade">
 					<td><span> {{grade.days}}</span></td>
 					<td><span> {{grade.hours}}</span></td>
 					<td><span> {{grade.profLastName}}, {{grade.profName}}</span></td>
